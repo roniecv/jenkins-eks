@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       inheritFrom 'kube-agent'
-      yaml '''
+      //yaml '''
       spec:
         containers:
         - name: terraform
