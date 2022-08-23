@@ -58,8 +58,3 @@ module "storage" {
 
 #   database_contracts = local.database_contracts
 # }
-
- # module "ssoassignment" {
- # source            = "./templates/accounts"
- # account_contracts = local.account_contracts
-#}
