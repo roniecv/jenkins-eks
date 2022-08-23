@@ -1,10 +1,10 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'kube-agent'
-      containerTemplate {
-        name 'terraform'
-        image 'hashicorp/terraform:latest'
+      //inheritFrom 'kube-agent'
+      //containerTemplate {
+       // name 'terraform'
+       // image 'hashicorp/terraform:latest'
         //command 'sleep'
         //args '99d'
          //persistentVolumeClaim:
@@ -30,9 +30,11 @@ environment {
             }
 
       stage('TF Init&Plan') {
+        container('terraform') {
           steps {
               sh 'terraform init -upgrade'
-              sh 'terraform plan'    
+              sh 'terraform plan'  
+          }
       }
     }
       stage ("terraform Action") {
