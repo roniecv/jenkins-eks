@@ -1,11 +1,12 @@
 pipeline {
   agent {
     kubernetes {
-      containerTemplate {
-        name 'terraform'
-        image 'hashicorp/terraform:latest'
-        command 'sleep'
-        args '99d'
+      inheritFrom 'terraform'
+//       containerTemplate {
+//         name 'terraform'
+//         image 'hashicorp/terraform:latest'
+//         command 'sleep'
+//         args '99d'
     }
   }
 }
