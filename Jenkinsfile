@@ -1,13 +1,17 @@
-pipeline {
-  agent {
-    kubernetes {
-      inheritFrom 'terraform'
+podTemplate(inheritFrom: 'kube-agent', containers: [
+    containerTemplate(name: 'terraform', image: 'hashicorp/terraform:latest')
+  ]) {
+  node(POD_LABEL) {
+
+//pipeline {
+//  agent {
+//    kubernetes {
 //       containerTemplate {
 //         name 'terraform'
 //         image 'hashicorp/terraform:latest'
 //         command 'sleep'
 //         args '99d'
-    }
+    //}
   }
 }
 environment {
