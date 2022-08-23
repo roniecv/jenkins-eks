@@ -34,13 +34,11 @@ environment {
             }
 
       stage('TF Init&Plan') {
-        container('terraform') {
           steps {
               sh 'terraform init -upgrade'
               sh 'terraform plan'  
           }
       }
-    }
       stage ("terraform Action") {
             steps {
                 echo "Terraform action is --> ${action}"
