@@ -1,17 +1,18 @@
 pipeline {
   agent {
     kubernetes {
-      //inheritFrom 'kube-agent'
-      //containerTemplate {
-       // name 'terraform'
-       // image 'hashicorp/terraform:latest'
-        //command 'sleep'
-        //args '99d'
-         //persistentVolumeClaim:
-              //claimName: jenkins-pv-claim
+      containerTemplate {
+        name 'terraform'
+        image 'hashicorp/terraform:latest'
+        command 'sleep'
+        args '99d'
+      persistentVolumeClaim {
+        claimName 'jenkins-pv-claim'
+        mountPath '/root/terraform 
       }
     }
   }
+}
 environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
