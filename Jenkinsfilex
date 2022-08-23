@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+    stages {
+      stage('checkout') {
+            steps {
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/user/repositoryname.git"
+                        }
+                    }
+                }
+            }
+
+      stage('TF Init&Plan') {
+        steps {
+          sh 'terraform init -upgrade'
+          sh 'terraform plan'
+        }      
+      }
+
+      stage ("terraform Action") {
+            steps {
+                echo "Terraform action is --> ${action}"
+                sh ('terraform ${action} --auto-approve') 
+        }
+      }  
+    } 
+  }
