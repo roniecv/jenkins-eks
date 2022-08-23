@@ -5,11 +5,19 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+ backend "s3" {
+    bucket = "demo-state-ecv"
+    key    = "state/demo-state-ecv"
+    region = "ap-southeast-1"
+  }
 }
 
 provider "aws" {
   region     = "ap-southeast-1"
 }
+
+
 
 locals {
   contracts = {
