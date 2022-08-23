@@ -6,10 +6,6 @@ pipeline {
         image 'hashicorp/terraform:latest'
         command 'sleep'
         args '99d'
-      persistentVolumeClaim {
-        claimName 'jenkins-pv-claim'
-        mountPath '/root/terraform 
-      }
     }
   }
 }
