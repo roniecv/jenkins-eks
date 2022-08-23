@@ -6,7 +6,7 @@ pipeline {
         image 'hashicorp/terraform:latest'
         command 'sleep'
         args '99d'
-
+     }
   }
 }
 environment {
