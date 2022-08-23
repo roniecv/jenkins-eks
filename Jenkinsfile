@@ -20,7 +20,7 @@ environment {
                  script{
                         dir("terraform")
                         {
-                            git "https://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@github.com/roniecv/testing.git"
+                            git "https://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@github.com/roniecv/jenkins-eks.git"
                         }
                     }
                 }
